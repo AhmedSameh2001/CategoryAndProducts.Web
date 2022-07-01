@@ -1,0 +1,50 @@
+﻿@model List<Product>
+
+<a asp-action="Create" asp-controller="Product" class="btn btn-success">Page Add Product</a>
+<br /><br />
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Message! </strong> @TempData["msg"]
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@*}*@
+@if(Model.Any()){
+
+     <div class="alert alert-success">
+        <h3>There are Products</h3>
+    </div>
+
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Ctreated At</th>
+            <th>Actions</th>
+        </tr>
+        
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th>@item.ID</th>
+                <th>@item.Name</th>
+                <th>@item.Price</th>
+                <th>
+                    <img src="~/images/@item.ImageUrl" class="img-fluid" width="200"/>
+                </th>
+                <th>@item.Category.Name</th>
+                <th>@item.CreatedAt.ToString("dd/MM/yyyy")</th>
+                <th>
+                    <a href="~/Product/Update/@item.ID" class="btn btn-warning">Update</a>
+                    <a href="~/Product/Delete/@item.ID" class="btn btn-danger">Delete</a>
+                </th>
+            </tr>
+        }
+    </table>
+}else{
+    <div class="alert alert-danger">
+        <h3>There are no products</h3>
+    </div>
+}

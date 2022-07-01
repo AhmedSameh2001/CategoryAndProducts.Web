@@ -1,0 +1,17 @@
+﻿@model UpdateCategoryViewModel
+
+<h1>Update Category !!</h1>
+<hr />
+<form asp-action="Update">
+    <input  asp-for="ID" type="hidden"/>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="label-contol" asp-for="Name"></label><br />
+                <input required class="form-control" asp-for="Name"/>
+            </div>
+        </div>
+    </div><br />
+    <input class="btn btn-primary" type="submit" value="Save" />
+    <a asp-controller="Category" asp-action="index" class="btn btn-danger">Back</a>
+</form>
